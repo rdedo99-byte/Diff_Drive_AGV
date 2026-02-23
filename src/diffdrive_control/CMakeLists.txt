@@ -44,10 +44,6 @@ install(
   DESTINATION include
 )
 
-# RIMOZIONE: Rimossa installazione di config/diff_drive_controller.yaml
-
-# Installazione dei file di lancio (launch) - Solo per il launch file refactorizzato
-# NUOVO BLOCCO: Installazione esplicita del file di lancio
 install(
   FILES launch/diff_drive.launch.py
   DESTINATION share/${PROJECT_NAME}/launch
