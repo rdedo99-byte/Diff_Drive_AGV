@@ -1,0 +1,9 @@
+<library path="diffdrive_control">
+  <class name="diffdrive_control/ESP32DiffDriveHardware"
+         type="diffdrive_control::ESP32DiffDriveHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      ESP32 differential drive hardware interface
+    </description>
+  </class>
+</library>

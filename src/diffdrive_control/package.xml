@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>diffdrive_control</name>
+  <version>0.1.0</version>
+  <description>Hardware interface for ESP32 differential drive robot</description>
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_auto</buildtool_depend> <depend>rclcpp</depend>
+  <depend>pal_statistics</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>controller_interface</depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>std_msgs</depend> <exec_depend>controller_manager</exec_depend>
+  <exec_depend>joint_state_broadcaster</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>xacro</exec_depend> <exec_depend>robot_state_publisher</exec_depend>
+
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type> 
+    <hardware_interface plugin="${prefix}/diff_drive_esp32_hw_interface.xml"/>
+  </export>
+</package>
