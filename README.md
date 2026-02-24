@@ -119,8 +119,8 @@ cd ~/ros2_ws
 Now you can clone this repository and all the packages needed to interface with the LiDAR and the IMU;
 ```bash
 git clone https://github.com/rdedo99-byte/Diff_Drive_AGV.git
-git clone -b jazzy https://github.com/Slamtec/sllidar_ros2.git
-git clone https://github.com/dheera/ros2-imu-bno055.git
+git clone https://github.com/Slamtec/sllidar_ros2.git
+git clone https://github.com/dheera/ros-imu-bno055.git
 ```
 
 *In order to correctly establish a connection between the `slllidar_ros2` package and the physical LiDAR mounted on the robot, it's needed to change the `sllidar_a1_launch.py` launch file, modifying the `serial_port` parameter from `/dev/ttyUSB0` to `/dev/ttyLiDAR`*
