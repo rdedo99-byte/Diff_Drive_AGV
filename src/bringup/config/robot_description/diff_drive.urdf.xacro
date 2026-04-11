@@ -12,32 +12,38 @@
   </link>
 
   <link name="base_link">
+  </link>
+
+  <joint name="chassis_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="chassis" />
+    <origin rpy="0 0 0" xyz="0 0 0" />
+  </joint>
+
+  <link name="chassis">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin rpy="1.57 0 1.57" xyz="0 0 0" />
       <geometry>
-        <box size="0.21 0.2 0.11" />
+        <mesh filename="package://robot_description/urdf/meshes/AssiemeBaseLink.dae" />
       </geometry>
-      <material name="blue">
-        <color rgba="0 0.5 1 1" />
-      </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0.068" rpy="0 0 0" />
+      <origin rpy="0 0 0" xyz="-0.03 0 0" />
       <geometry>
         <box size="0.21 0.2 0.11" />
       </geometry>
     </collision>
     <inertial>
-      <mass value="5" />
+      <mass value="5.0" />
       <inertia ixx="0.13" ixy="0.0" ixz="0.0" iyy="0.21" iyz="0.0" izz="0.13" />
     </inertial>
   </link>
 
   <link name="caster">
     <visual>
-      <origin xyz="0.0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <sphere radius="0.033" />
+        <mesh filename="package://robot_description/urdf/meshes/caster.dae" />
       </geometry>
       <material name="darkgray">
         <color rgba=".2 .2 .2 1" />
@@ -63,13 +69,10 @@
 
   <link name="right_wheel">
     <visual>
-      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <origin xyz="0 0.015 0" rpy="0 0 0" />
       <geometry>
-        <cylinder length="0.026" radius="0.033" />
+        <mesh filename="package://robot_description/urdf/meshes/wheel.dae" />
       </geometry>
-      <material name="darkgray">
-        <color rgba=".2 .2 .2 1" />
-      </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="1.570795 0 0" />
@@ -86,19 +89,16 @@
   <joint name="joint_right_wheel" type="continuous">
     <parent link="base_link" />
     <child link="right_wheel" />
-    <origin xyz="-0.09 -0.1 -0.035" rpy="0 0 0" />
+    <origin xyz="-0.12 -0.11 -0.059" rpy="0 0 0" />
     <axis xyz="0 1 0" />
   </joint>
 
   <link name="left_wheel">
     <visual>
-      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <origin xyz="0 -0.015 0" rpy="0 0 3.14" />
       <geometry>
-        <cylinder length="0.026" radius="0.033" />
+        <mesh filename="package://robot_description/urdf/meshes/wheel.dae" />
       </geometry>
-      <material name="darkgray">
-        <color rgba=".2 .2 .2 1" />
-      </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="1.570795 0 0" />
@@ -115,28 +115,27 @@
   <joint name="joint_left_wheel" type="continuous">
     <parent link="base_link" />
     <child link="left_wheel" />
-    <origin xyz="-0.09 0.1 -0.035" rpy="0 0 0" />
+    <origin xyz="-0.12 0.11 -0.059" rpy="0 0 0" />
     <axis xyz="0 1 0" />
   </joint>
 
   <joint name="laser_joint" type="fixed">
     <parent link="base_link" />
     <child link="laser" />
-    <origin xyz="0 0 0.055" rpy="0 0 0" />
+    <origin xyz="-0.035 0 0.1" rpy="0 0 0" />
   </joint>
 
   <link name="laser">
     <visual>
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <cylinder radius="0.05" length="0.06" />
+        <mesh filename="package://robot_description/urdf/meshes/rp_lidar_a1.dae" />
       </geometry>
-      <material name="darkgray">
-        <color rgba=".2 .2 .2 1" />
-      </material>
     </visual>
     <collision>
+      <origin xyz="0 0 -0.03" rpy="0 0 0" />
       <geometry>
-        <cylinder radius="0.05" length="0.06" />
+        <cylinder radius="0.05" length="0.04" />
       </geometry>
     </collision>
     <inertial>
@@ -148,18 +147,15 @@
   <joint name="imu_joint" type="fixed">
     <parent link="base_link" />
     <child link="imu" />
-    <origin xyz="-0.105 0 0" rpy="0 0 0" />
+    <origin xyz="-0.123 0 0.005" rpy="0 0 0" />
   </joint>
 
   <link name="imu">
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="1.57 0 0" />
       <geometry>
-        <box size="0.026 0.02 0.002" />
+        <mesh filename="package://robot_description/urdf/meshes/Adafruit_BNO055_AP297.dae" />
       </geometry>
-      <material name="darkgray">
-        <color rgba=".2 .2 .2 1" />
-      </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -174,7 +170,7 @@
   </link>
 
   <xacro:sensor_d435 parent="base_link" name="camera0" use_nominal_extrinsics="true">
-    <origin xyz="0.1 0.0 0.055" rpy="0 0 0" />
+    <origin xyz="0.070 0.0 0.055" rpy="0 0 0" />
   </xacro:sensor_d435>
 
   <ros2_control name="dd_robot_control" type="system">
